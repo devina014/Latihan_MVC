@@ -53,3 +53,29 @@ Route::put('/produk/update', function (Request $request) {
  <b>Harga:</b> Rp$hargaBaru <br>
  <b>Kategori:</b> $kategoriBaru";
 });
+
+Route::get('/profil/{vina}', function ($vina) {
+return "Halo, ini adalah profil milik: <b>$vina</b>";
+});
+
+Route::get('/produk/{kategori}/{id}', function ($kategori, $id) {
+return "Kategori: <b>$kategori</b> <br> ID Produk: <b>$id</b>";
+});
+
+Route::get('/profil/{vina}', function ($vina) {
+return view('profil', ['vina' => $vina]);
+});
+
+
+// Halaman utama (daftar link tiket)
+Route::get('/', function () {
+    return view('welcome_tiket');
+});
+
+// Halaman detail tiket berdasarkan parameter
+Route::get('/tiket/{tempat}/{harga}', function ($tempat, $harga) {
+    return view('tiket', [
+        'tempat' => $tempat,
+        'harga' => $harga
+    ]);
+});
